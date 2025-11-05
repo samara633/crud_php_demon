@@ -1,0 +1,28 @@
+http://localhost/PHP_DEMO/items/read.php
+---ruta del navegador-----------------
+
+---rutas de postman------------------
+Método	URL	Acción
+GET	http://localhost/PHP_DEMO/items/read.php	Leer todos los registros
+POST	http://localhost/PHP_DEMO/items/create.php	Crear un nuevo registro
+PUT	http://localhost/PHP_DEMO/items/update.php	Actualizar un registro existente
+DELETE	http://localhost/PHP_DEMO/items/delete.php	Eliminar un registro
+
+Para crear un registro (método POST), usa en el body (JSON):
+
+{
+  "nombre": "televisor",
+  "descripcion": "color rosa",
+  "precio": 960000.00,
+  "categoria_id": 3,
+  "fecha_creacion": "2025-10-17 20:20:05",
+  "fecha_modificacion": "2025-10-17 20:20:05"
+}
+
+para eliminar registro por id
+{
+  "id": 6
+}
+
+para actualizar registro
+

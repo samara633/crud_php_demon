@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^read$ items/read.php [NC,L]
+RewriteRule ^create$ items/create.php [NC,L]
+RewriteRule ^update$ items/update.php [NC,L]
+RewriteRule ^delete$ items/delete.php [NC,L]
