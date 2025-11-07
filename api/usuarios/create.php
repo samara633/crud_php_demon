@@ -18,15 +18,13 @@ $data = json_decode(file_get_contents("php://input"));
 if (
     !empty($data->nombre) &&
     !empty($data->correo) &&
-    !empty($data->contraseña)
+    !empty($data->contrasena)
 ) {
     $item->nombre = $data->nombre;
     $item->correo = $data->correo;
     $item->telefono = $data->telefono ?? null;
-    $item->direccion = $data->direccion ?? null;
     $item->rol = $data->rol ?? 'cliente';
-    $item->contraseña = $data->contraseña;
-    $item->fecha_creacion = date('Y-m-d H:i:s');
+    $item->contrasena = $data->contrasena;
 
     if ($item->create()) {
         echo json_encode(["message" => "Usuario creado correctamente."]);
@@ -37,3 +35,4 @@ if (
     echo json_encode(["message" => "Datos incompletos."]);
 }
 ?>
+

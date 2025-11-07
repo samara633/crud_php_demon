@@ -9,31 +9,36 @@ $database = new Database();
 $db = $database->getConnection();
 
 $items = new Usuario($db);
+
 $stmt = $items->read();
 $itemCount = $stmt->rowCount();
 
-if ($itemCount > 0) {
-    $usuariosArr = [];
-    $usuariosArr["body"] = [];
-    $usuariosArr["itemCount"] = $itemCount;
+if($itemCount > 0){
+    
+    $userArr = array();
+    $userArr["body"] = array();
+    $userArr["itemCount"] = $itemCount;
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         extract($row);
-        $e = [
+
+        $e = array(
             "id" => $id,
             "nombre" => $nombre,
             "correo" => $correo,
-            "telefono" => $telefono,
-            "direccion" => $direccion,
             "rol" => $rol,
-            "fecha_creacion" => $fecha_creacion,
-            "fecha_modificacion" => $fecha_modificacion
-        ];
-        array_push($usuariosArr["body"], $e);
+            "fecha_registro" => $fecha_registro,
+            "telefono" => $telefono
+        );
+
+        array_push($userArr["body"], $e);
     }
 
-    echo json_encode($usuariosArr);
-} else {
-    echo json_encode(["message" => "No se encontraron usuarios."]);
+    echo json_encode($userArr);
 }
-?>
+else{
+    echo json_encode(
+        array("message" => "No se encontraron usuarios.")
+    );
+}
+
